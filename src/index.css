@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+    min-height: 100vh;
+}
+
+/* Base transitions */
+.transition-default {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Ensure modals and overlays are above other content */
+.z-modal {
+    z-index: 50;
+}
+
+/* Remove default button styles */
+button {
+    appearance: none;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+/* Ensure text remains clear */
+.text-rendering-optimized {
+    text-rendering: optimizeLegibility;
+}
