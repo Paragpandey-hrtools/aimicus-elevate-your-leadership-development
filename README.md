@@ -1,4 +1,4 @@
-# Leadership Development Platform
+# Aimicus - Elevate Your Leadership Development
 
 An interactive web application that helps elevate leadership development by providing best-in-class information to assist in making leaders future-ready.
 
