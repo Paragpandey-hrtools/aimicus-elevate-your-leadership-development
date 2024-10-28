@@ -23,7 +23,7 @@ An interactive web application that helps elevate leadership development by prov
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/YOURUSERNAME/leadership-development-platform.git
+git clone https://github.com/Paragpandey-hrtools/aimicus-elevate-your-leadership-development.git
 ```
 
 2. Install dependencies:
