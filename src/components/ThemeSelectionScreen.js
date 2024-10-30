@@ -5,6 +5,16 @@ const ThemeSelectionScreen = ({ onNextClick, onThemeSelect, APPS_SCRIPT_URL }) =
   const [showPrompt, setShowPrompt] = useState(false);
   const [randomThemes, setRandomThemes] = useState([]);
 
+  // Function to shuffle array
+  const shuffleArray = (array) => {
+    const newArray = [...array];
+    for (let i = newArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    }
+    return newArray;
+  };
+
   // Function to fetch themes from Apps Script
   const fetchThemes = async () => {
     try {
@@ -26,24 +36,15 @@ const ThemeSelectionScreen = ({ onNextClick, onThemeSelect, APPS_SCRIPT_URL }) =
     }
   };
 
-  // Shuffle array function
-  const shuffleArray = (array) => {
-    const newArray = [...array];
-    for (let i = newArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-    }
-    return newArray;
-  };
-
   // Fetch themes when component mounts
   useEffect(() => {
     fetchThemes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleImageSelect = (item) => {
-    setSelectedTheme(item);
-    onThemeSelect && onThemeSelect(item);
+  const handleImageSelect = (theme) => {
+    setSelectedTheme(theme);
+    onThemeSelect && onThemeSelect(theme);
   };
 
   return (
@@ -57,41 +58,31 @@ const ThemeSelectionScreen = ({ onNextClick, onThemeSelect, APPS_SCRIPT_URL }) =
         (from the randomised 15 of 32 themes)
       </p>
 
-      {/* Grid of random themes */}
-      <div className="w-full max-w-3xl mx-auto mb-8">
-        {[0, 1, 2, 3, 4].map((row) => (
-          <div key={row} className="flex justify-center gap-2 mb-2">
-            {[0, 1, 2].map((col) => {
-              const index = row * 3 + col;
-              const theme = randomThemes[index];
-              if (!theme || index >= 15) return null;
-              
-              return (
-                <div
-                  key={theme.id}
-                  className={`w-32 h-32 border-2 cursor-pointer relative ${
-                    selectedTheme?.id === theme.id
-                      ? 'border-green-500'
-                      : 'border-gray-300'
-                  }`}
-                  onClick={() => handleImageSelect(theme)}
-                >
-                  <img
-                    src={theme.imageUrl}
-                    alt={theme.title}
-                    className="w-full h-full object-cover"
-                  />
-                  {selectedTheme?.id === theme.id && (
-                    <>
-                      <div className="absolute inset-0 bg-black bg-opacity-20"/>
-                      <div className="absolute top-2 right-2 w-6 h-6 bg-black bg-opacity-75 rounded-full flex items-center justify-center">
-                        <span className="text-white text-sm">✓</span>
-                      </div>
-                    </>
-                  )}
+      {/* Fixed 3x5 Grid */}
+      <div className="w-full max-w-3xl mx-auto mb-8 grid grid-cols-3 gap-2">
+        {randomThemes.slice(0, 15).map((theme, index) => (
+          <div
+            key={theme.id}
+            className={`w-32 h-32 border-2 cursor-pointer relative ${
+              selectedTheme?.id === theme.id
+                ? 'border-green-500'
+                : 'border-gray-300'
+            }`}
+            onClick={() => handleImageSelect(theme)}
+          >
+            <img
+              src={theme.imageUrl}
+              alt={`Theme ${index + 1}`}
+              className="w-full h-full object-cover"
+            />
+            {selectedTheme?.id === theme.id && (
+              <>
+                <div className="absolute inset-0 bg-black bg-opacity-20"/>
+                <div className="absolute top-2 right-2 w-6 h-6 bg-black bg-opacity-75 rounded-full flex items-center justify-center">
+                  <span className="text-white text-sm">✓</span>
                 </div>
-              );
-            })}
+              </>
+            )}
           </div>
         ))}
       </div>
