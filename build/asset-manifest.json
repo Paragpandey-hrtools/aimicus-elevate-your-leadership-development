@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/aimicus-elevate-your-leadership-development/static/css/main.3fbe7e3c.css",
+    "main.js": "/aimicus-elevate-your-leadership-development/static/js/main.91c8e1ea.js",
+    "index.html": "/aimicus-elevate-your-leadership-development/index.html",
+    "main.3fbe7e3c.css.map": "/aimicus-elevate-your-leadership-development/static/css/main.3fbe7e3c.css.map",
+    "main.91c8e1ea.js.map": "/aimicus-elevate-your-leadership-development/static/js/main.91c8e1ea.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3fbe7e3c.css",
+    "static/js/main.91c8e1ea.js"
+  ]
+}
