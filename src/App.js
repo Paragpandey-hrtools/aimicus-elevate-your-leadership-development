@@ -1,4 +1,14 @@
 import React, { useState } from 'react';
+import ThemeSelectionScreen from './components/ThemeSelectionScreen';
+import TrainingOptionsScreen from './components/TrainingOptionsScreen';
+import NewMethodologiesScreen from './components/NewMethodologiesScreen';
+import FirstOutputScreen from './components/FirstOutputScreen';
+import SecondOutputScreen from './components/SecondOutputScreen';
+import ThirdOutputScreen from './components/ThirdOutputScreen';
+import FourthOutputScreen from './components/FourthOutputScreen';
+import FifthOutputScreen from './components/FifthOutputScreen';
+import SixthOutputScreen from './components/SixthOutputScreen';
+import ConcludingScreen from './components/ConcludingScreen';
 
 // Apps Script URL
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby2MV2pXaqAwZeClPG-2UvTRM5MzJA43RrqcjZ5hjXjFFvp4f-rZHPAuHhAq6k6QbCi6w/exec';
